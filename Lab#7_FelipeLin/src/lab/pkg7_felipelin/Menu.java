@@ -5,11 +5,13 @@
  */
 package lab.pkg7_felipelin;
 
+import java.awt.BorderLayout;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +27,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.pack();
+
     }
 
     /**
@@ -57,7 +60,19 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_main = new javax.swing.JList<>();
         destacados_lista = new javax.swing.JDialog();
+        pb_principal2 = new javax.swing.JProgressBar();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_destacados = new javax.swing.JList<>();
+        jButton8 = new javax.swing.JButton();
         papelera_lista = new javax.swing.JDialog();
+        pb_principal1 = new javax.swing.JProgressBar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_basura = new javax.swing.JList<>();
+        jButton7 = new javax.swing.JButton();
+        popup_main = new javax.swing.JPopupMenu();
+        destacado = new javax.swing.JMenuItem();
+        agregar = new javax.swing.JMenuItem();
+        elim = new javax.swing.JMenuItem();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -198,6 +213,8 @@ public class Menu extends javax.swing.JFrame {
         main_lista.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         pb_principal.setToolTipText("");
+        pb_principal.setString("");
+        pb_principal.setStringPainted(true);
 
         jButton6.setText("Regresar");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,6 +223,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jl_main.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_mainMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jl_main);
 
         javax.swing.GroupLayout main_listaLayout = new javax.swing.GroupLayout(main_lista.getContentPane());
@@ -239,27 +261,122 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pb_principal2.setToolTipText("");
+        pb_principal2.setString("");
+        pb_principal2.setStringPainted(true);
+
+        jl_destacados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_destacadosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jl_destacados);
+
+        jButton8.setText("Regresar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout destacados_listaLayout = new javax.swing.GroupLayout(destacados_lista.getContentPane());
         destacados_lista.getContentPane().setLayout(destacados_listaLayout);
         destacados_listaLayout.setHorizontalGroup(
             destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(destacados_listaLayout.createSequentialGroup()
+                .addGroup(destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, destacados_listaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(destacados_listaLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(pb_principal2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(destacados_listaLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         destacados_listaLayout.setVerticalGroup(
             destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(destacados_listaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pb_principal2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        pb_principal1.setToolTipText("");
+        pb_principal1.setString("");
+        pb_principal1.setStringPainted(true);
+
+        jl_basura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_basuraMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jl_basura);
+
+        jButton7.setText("Regresar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout papelera_listaLayout = new javax.swing.GroupLayout(papelera_lista.getContentPane());
         papelera_lista.getContentPane().setLayout(papelera_listaLayout);
         papelera_listaLayout.setHorizontalGroup(
             papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(papelera_listaLayout.createSequentialGroup()
+                .addGroup(papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, papelera_listaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(papelera_listaLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(pb_principal1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(papelera_listaLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         papelera_listaLayout.setVerticalGroup(
             papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(papelera_listaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pb_principal1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        destacado.setLabel("Mover Destacado");
+        destacado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                destacadoActionPerformed(evt);
+            }
+        });
+        popup_main.add(destacado);
+
+        agregar.setText("Agregar");
+        agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarActionPerformed(evt);
+            }
+        });
+        popup_main.add(agregar);
+
+        elim.setLabel("Eliminar");
+        popup_main.add(elim);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -315,9 +432,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        jd_agregar.setVisible(true);
         jd_agregar.setLocationRelativeTo(null);
         jd_agregar.pack();
+        jd_agregar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -437,9 +554,9 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         DefaultListModel modelo = new DefaultListModel();
-        main_lista.setVisible(true);
-        main_lista.setLocationRelativeTo(null);
         main_lista.pack();
+        main_lista.setLocationRelativeTo(null);
+        main_lista.setVisible(true);
         this.dispose();
 
         try {
@@ -459,8 +576,65 @@ public class Menu extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        if (jl_main.isSelectionEmpty()) {
+            hl = new hilolink(pb_principal, "Mi Unidad");
+        } else {
+            hl = new hilolink(pb_principal, ((Carpeta) modelo.get(jl_main.getSelectedIndex())).getLink());
+
+        }
+
+        Thread proceso1 = new Thread(hl);
+        proceso1.start();
         jl_main.setModel(modelo);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jl_mainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_mainMouseClicked
+        // TODO add your handling code here:
+
+        if (jl_main.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                popup_main.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_mainMouseClicked
+
+    private void jl_basuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_basuraMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jl_basuraMouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jl_destacadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_destacadosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jl_destacadosMouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
+        // TODO add your handling code here:
+        jd_agregar.setLocationRelativeTo(null);
+        jd_agregar.pack();
+        jd_agregar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_agregarActionPerformed
+
+    private void destacadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destacadoActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel model2 = (DefaultListModel) jl_main.getModel();
+
+        model2.remove(jl_main.getSelectedIndex());
+        
+        if (model2.get(jl_main.getSelectedIndex()) instanceof Carpeta) {
+            
+        }
+
+        jl_main.setModel(model2);
+    }//GEN-LAST:event_destacadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,16 +702,21 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem agregar;
     private javax.swing.JComboBox<String> cb_extension;
     private javax.swing.JButton crear_archivo;
     private javax.swing.JButton crear_carpeta;
+    private javax.swing.JMenuItem destacado;
     private javax.swing.JDialog destacados_lista;
+    private javax.swing.JMenuItem elim;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -545,15 +724,24 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JList<String> jl_basura;
+    private javax.swing.JList<String> jl_destacados;
     private javax.swing.JList<String> jl_main;
     private javax.swing.JDialog main_lista;
     private javax.swing.JDialog papelera_lista;
     private javax.swing.JProgressBar pb_principal;
+    private javax.swing.JProgressBar pb_principal1;
+    private javax.swing.JProgressBar pb_principal2;
+    private javax.swing.JPopupMenu popup_main;
     private javax.swing.JTextField tf_archivo_nombre;
     private javax.swing.JTextField tf_archivo_size;
     private javax.swing.JTextField tf_carpeta_nombre;
     // End of variables declaration//GEN-END:variables
     int cant = 0;
+    hilolink hl;
+
 }
