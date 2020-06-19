@@ -62,7 +62,7 @@ public class Carpeta implements Serializable {
 
     @Override
     public String toString() {
-        return "Carpeta{" + "nombre=" + nombre + ", link=" + link + ", lista_archivo=" + lista_archivo + ", lista_carpeta=" + lista_carpeta + '}';
+        return "Nombre = "+nombre + " , lista_archivo=" + lista_archivo + ", lista_carpeta=" + lista_carpeta + '}';
     }
 
 }

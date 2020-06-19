@@ -63,6 +63,8 @@ public class Menu extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        jd_agregar.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
         jButton5.setText("Regresar");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -192,6 +194,8 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        main_lista.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         pb_principal.setToolTipText("");
 
@@ -374,12 +378,13 @@ public class Menu extends javax.swing.JFrame {
         try {
             adminArchivo aa = new adminArchivo("./Archivo.ola");
             adminCarpeta ac = new adminCarpeta("./Carpeta.ola");
-            aa.cargarArchivo();
-            ac.cargarArchivo();
             String nombre, link;
             String con1, con2, cadena1 = "", cadena2 = "";
-            nombre = tf_archivo_nombre.getText();
+            nombre = tf_carpeta_nombre.getText();
             link = random2();
+
+            aa.cargarArchivo();
+            ac.cargarArchivo();
 
             if (!ac.getLista().isEmpty()) {
 
@@ -431,7 +436,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        DefaultListModel modelo = (DefaultListModel) jl_main.getModel();
+        DefaultListModel modelo = new DefaultListModel();
         main_lista.setVisible(true);
         main_lista.setLocationRelativeTo(null);
         main_lista.pack();
@@ -496,12 +501,12 @@ public class Menu extends javax.swing.JFrame {
 
     public static String random() {
         String cadena = "";
-        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String fullalphabet = alphabet + alphabet.toLowerCase() + "123456789";
+        String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String combi = abecedario + abecedario.toLowerCase() + "123456789";
         char c;
 
         for (int i = 0; i < 10; i++) {
-            c = fullalphabet.charAt(random.nextInt(62));
+            c = combi.charAt(random.nextInt(62));
             cadena += c;
         }
 
@@ -510,12 +515,12 @@ public class Menu extends javax.swing.JFrame {
 
     public static String random2() {
         String cadena = "";
-        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String fullalphabet = alphabet + alphabet.toLowerCase() + "123456789";
+        String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String combi = abecedario + abecedario.toLowerCase() + "123456789";
         char c;
 
         for (int i = 0; i < 5; i++) {
-            c = fullalphabet.charAt(random.nextInt(62));
+            c = combi.charAt(random.nextInt(62));
             cadena += c;
         }
 
