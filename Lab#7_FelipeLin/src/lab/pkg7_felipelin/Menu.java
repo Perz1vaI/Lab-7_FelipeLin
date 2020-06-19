@@ -5,7 +5,11 @@
  */
 package lab.pkg7_felipelin;
 
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,6 +51,13 @@ public class Menu extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tf_carpeta_nombre = new javax.swing.JTextField();
         crear_carpeta = new javax.swing.JButton();
+        main_lista = new javax.swing.JDialog();
+        pb_principal = new javax.swing.JProgressBar();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jl_main = new javax.swing.JList<>();
+        destacados_lista = new javax.swing.JDialog();
+        papelera_lista = new javax.swing.JDialog();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -182,9 +193,78 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pb_principal.setToolTipText("");
+
+        jButton6.setText("Regresar");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(jl_main);
+
+        javax.swing.GroupLayout main_listaLayout = new javax.swing.GroupLayout(main_lista.getContentPane());
+        main_lista.getContentPane().setLayout(main_listaLayout);
+        main_listaLayout.setHorizontalGroup(
+            main_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(main_listaLayout.createSequentialGroup()
+                .addGroup(main_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, main_listaLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(main_listaLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(pb_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 34, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(main_listaLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        main_listaLayout.setVerticalGroup(
+            main_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(main_listaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pb_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout destacados_listaLayout = new javax.swing.GroupLayout(destacados_lista.getContentPane());
+        destacados_lista.getContentPane().setLayout(destacados_listaLayout);
+        destacados_listaLayout.setHorizontalGroup(
+            destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        destacados_listaLayout.setVerticalGroup(
+            destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout papelera_listaLayout = new javax.swing.GroupLayout(papelera_lista.getContentPane());
+        papelera_lista.getContentPane().setLayout(papelera_listaLayout);
+        papelera_listaLayout.setHorizontalGroup(
+            papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        papelera_listaLayout.setVerticalGroup(
+            papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Mi Unidad");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Papelera");
 
@@ -299,7 +379,7 @@ public class Menu extends javax.swing.JFrame {
             String nombre, link;
             String con1, con2, cadena1 = "", cadena2 = "";
             nombre = tf_archivo_nombre.getText();
-            link = random();
+            link = random2();
 
             if (!ac.getLista().isEmpty()) {
 
@@ -314,6 +394,10 @@ public class Menu extends javax.swing.JFrame {
                 }
             }
 
+            Carpeta p = new Carpeta(nombre, link);
+
+            ac.setCarpeta(p);
+
             if (!aa.getLista().isEmpty()) {
                 for (Archivo c : aa.getLista()) {
                     cadena2 += aa.getLista().indexOf(c) + " - " + c + "\n";
@@ -325,19 +409,53 @@ public class Menu extends javax.swing.JFrame {
                     con2 = JOptionPane.showInputDialog(jd_agregar, "Desea agregar otro archivo [s/n]");
                 }
             }
-            Carpeta p = new Carpeta(nombre, link);
 
-            ac.setCarpeta(p);
             ac.escribirArchivo();
+            aa.escribirArchivo();
 
             tf_carpeta_nombre.setText("");
 
             cant++;
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(jd_agregar, "Ocurrio un error!");
             tf_carpeta_nombre.setText("");
         }
     }//GEN-LAST:event_crear_carpetaMouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        main_lista.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        DefaultListModel modelo = (DefaultListModel) jl_main.getModel();
+        main_lista.setVisible(true);
+        main_lista.setLocationRelativeTo(null);
+        main_lista.pack();
+        this.dispose();
+
+        try {
+            Carpeta temp;
+
+            FileInputStream entrada = new FileInputStream("./Carpeta.ola");
+            ObjectInputStream objeto = new ObjectInputStream(entrada);
+            try {
+                while ((temp = (Carpeta) objeto.readObject()) != null) {
+                    modelo.addElement(temp);
+                }
+            } catch (Exception e) {
+            }
+            objeto.close();
+            entrada.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        jl_main.setModel(modelo);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -390,23 +508,44 @@ public class Menu extends javax.swing.JFrame {
         return cadena;
     }
 
+    public static String random2() {
+        String cadena = "";
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String fullalphabet = alphabet + alphabet.toLowerCase() + "123456789";
+        char c;
+
+        for (int i = 0; i < 5; i++) {
+            c = fullalphabet.charAt(random.nextInt(62));
+            cadena += c;
+        }
+
+        return cadena;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_extension;
     private javax.swing.JButton crear_archivo;
     private javax.swing.JButton crear_carpeta;
+    private javax.swing.JDialog destacados_lista;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_agregar;
+    private javax.swing.JList<String> jl_main;
+    private javax.swing.JDialog main_lista;
+    private javax.swing.JDialog papelera_lista;
+    private javax.swing.JProgressBar pb_principal;
     private javax.swing.JTextField tf_archivo_nombre;
     private javax.swing.JTextField tf_archivo_size;
     private javax.swing.JTextField tf_carpeta_nombre;
