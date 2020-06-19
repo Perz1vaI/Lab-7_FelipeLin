@@ -6,6 +6,7 @@
 package lab.pkg7_felipelin;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -275,21 +276,66 @@ public class Menu extends javax.swing.JFrame {
             aa.setArchivo(a);
             aa.escribirArchivo();
 
+            tf_archivo_nombre.setText("");
+            tf_archivo_size.setText("");
+            cb_extension.setSelectedIndex(0);
+
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_agregar, "Ocurrio un error!");
+            tf_archivo_nombre.setText("");
+            tf_archivo_size.setText("");
+            cb_extension.setSelectedIndex(0);
+
         }
     }//GEN-LAST:event_crear_archivoMouseClicked
 
     private void crear_carpetaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crear_carpetaMouseClicked
         // TODO add your handling code here:
         try {
+            adminArchivo aa = new adminArchivo("./Archivo.ola");
+            adminCarpeta ac = new adminCarpeta("./Carpeta.ola");
+            aa.cargarArchivo();
+            ac.cargarArchivo();
             String nombre, link;
-            
-
+            String con1, con2, cadena1 = "", cadena2 = "";
             nombre = tf_archivo_nombre.getText();
-
             link = random();
 
+            if (!ac.getLista().isEmpty()) {
+
+                for (Carpeta c : ac.getLista()) {
+                    cadena1 += ac.getLista().indexOf(c) + " - " + c + "\n";
+                }
+                con1 = JOptionPane.showInputDialog(jd_agregar, "Desea agregar una carpeta [s/n]");
+                while (con1.equals("s")) {
+                    int pos = Integer.parseInt(JOptionPane.showInputDialog(this, cadena1 + "\nIngrese la posicion que quiere agregar"));
+                    ac.getLista().get(cant).getLista_carpeta().add(ac.getLista().get(pos));
+                    con1 = JOptionPane.showInputDialog(jd_agregar, "Desea agregar otra carpeta [s/n]");
+                }
+            }
+
+            if (!aa.getLista().isEmpty()) {
+                for (Archivo c : aa.getLista()) {
+                    cadena2 += aa.getLista().indexOf(c) + " - " + c + "\n";
+                }
+                con2 = JOptionPane.showInputDialog(jd_agregar, "Desea agregar un archivo [s/n]");
+                while (con2.equals("s")) {
+                    int pos = Integer.parseInt(JOptionPane.showInputDialog(this, cadena2 + "\nIngrese la posicion que quiere agregar"));
+                    ac.getLista().get(cant).getLista_archivo().add(aa.getLista().get(pos));
+                    con2 = JOptionPane.showInputDialog(jd_agregar, "Desea agregar otro archivo [s/n]");
+                }
+            }
+            Carpeta p = new Carpeta(nombre, link);
+
+            ac.setCarpeta(p);
+            ac.escribirArchivo();
+
+            tf_carpeta_nombre.setText("");
+
+            cant++;
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_agregar, "Ocurrio un error!");
+            tf_carpeta_nombre.setText("");
         }
     }//GEN-LAST:event_crear_carpetaMouseClicked
 
@@ -365,4 +411,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField tf_archivo_size;
     private javax.swing.JTextField tf_carpeta_nombre;
     // End of variables declaration//GEN-END:variables
+    int cant = 0;
 }
