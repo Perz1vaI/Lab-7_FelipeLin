@@ -13,6 +13,7 @@ import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -73,8 +74,13 @@ public class Menu extends javax.swing.JFrame {
         destacado = new javax.swing.JMenuItem();
         agregar = new javax.swing.JMenuItem();
         elim = new javax.swing.JMenuItem();
+        descargar = new javax.swing.JMenuItem();
         popup_eliminar = new javax.swing.JPopupMenu();
         eliminar = new javax.swing.JMenuItem();
+        descarga = new javax.swing.JDialog();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_descarga = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -356,6 +362,14 @@ public class Menu extends javax.swing.JFrame {
         });
         popup_main.add(elim);
 
+        descargar.setLabel("Descargar");
+        descargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descargarActionPerformed(evt);
+            }
+        });
+        popup_main.add(descargar);
+
         eliminar.setLabel("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,6 +377,48 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         popup_eliminar.add(eliminar);
+
+        descarga.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jt_descarga.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Link", "Tamaño"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jt_descarga);
+        if (jt_descarga.getColumnModel().getColumnCount() > 0) {
+            jt_descarga.getColumnModel().getColumn(0).setResizable(false);
+            jt_descarga.getColumnModel().getColumn(1).setResizable(false);
+            jt_descarga.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        descarga.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 593, 430));
+
+        jButton2.setText("Regresar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        descarga.getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, 150, 40));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -406,8 +462,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        jd_agregar.setLocationRelativeTo(null);
         jd_agregar.pack();
+        jd_agregar.setLocationRelativeTo(null);
         jd_agregar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
@@ -533,35 +589,41 @@ public class Menu extends javax.swing.JFrame {
         main_lista.setVisible(true);
         this.dispose();
 
-        try {
-            Carpeta temp;
+        adminArchivo aa = new adminArchivo("./Archivo.ola");
+        adminCarpeta ac = new adminCarpeta("./Carpeta.ola");
 
-            FileInputStream entrada = new FileInputStream("./Carpeta.ola");
-            ObjectInputStream objeto = new ObjectInputStream(entrada);
+        if (ac.getLista().size() >= 0 || aa.getLista().size() >= 0) {
             try {
-                while ((temp = (Carpeta) objeto.readObject()) != null) {
-                    modelo.addElement(temp);
-                }
-            } catch (Exception e) {
-            }
-            objeto.close();
-            entrada.close();
-            
-            Archivo temp2;
+                Carpeta temp;
 
-            FileInputStream entrada2 = new FileInputStream("./Archivo.ola");
-            ObjectInputStream objeto2 = new ObjectInputStream(entrada2);
-            try {
-                while ((temp2 = (Archivo) objeto2.readObject()) != null) {
-                    modelo.addElement(temp2);
+                FileInputStream entrada = new FileInputStream("./Carpeta.ola");
+                ObjectInputStream objeto = new ObjectInputStream(entrada);
+                try {
+                    while ((temp = (Carpeta) objeto.readObject()) != null) {
+                        modelo.addElement(temp);
+                    }
+                } catch (Exception e) {
                 }
-            } catch (Exception e) {
-            }
-            objeto2.close();
-            entrada2.close();
+                objeto.close();
+                entrada.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                Archivo temp2;
+
+                FileInputStream entrada2 = new FileInputStream("./Archivo.ola");
+                ObjectInputStream objeto2 = new ObjectInputStream(entrada2);
+                try {
+                    while ((temp2 = (Archivo) objeto2.readObject()) != null) {
+                        modelo.addElement(temp2);
+                    }
+                } catch (Exception e) {
+                }
+                objeto2.close();
+                entrada2.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
         if (jl_main.isSelectionEmpty()) {
@@ -574,6 +636,7 @@ public class Menu extends javax.swing.JFrame {
         Thread proceso1 = new Thread(hl);
         proceso1.start();
         jl_main.setModel(modelo);
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jl_mainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_mainMouseClicked
@@ -618,7 +681,7 @@ public class Menu extends javax.swing.JFrame {
 
         Thread proceso1 = new Thread(hl);
         proceso1.start();
-        
+
         if (jl_basura.isSelectionEmpty()) {
             hl = new hilolink(pb_principal3, "Papelera");
         } else {
@@ -629,7 +692,6 @@ public class Menu extends javax.swing.JFrame {
         Thread proceso2 = new Thread(hl);
         proceso2.start();
 
-       
 
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
@@ -676,6 +738,42 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarActionPerformed
 
+    private void descargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarActionPerformed
+        // TODO add your handling code here:
+        descarga.pack();
+        descarga.setLocationRelativeTo(null);
+        descarga.setVisible(true);
+        main_lista.dispose();
+
+        DefaultTableModel model = (DefaultTableModel) jt_descarga.getModel();
+        DefaultListModel model2 = (DefaultListModel) jl_main.getModel();
+
+        Carpeta p;
+        Archivo a;
+
+        if (model2.get(jl_main.getSelectedIndex()) instanceof Carpeta) {
+            p = (Carpeta) model2.get(jl_main.getSelectedIndex());
+            Object[] row = {p.getNombre(), p.getLink()};
+            model.addRow(row);
+        } else {
+            a = (Archivo) model2.get(jl_main.getSelectedIndex());
+            Object[] row = {a.getNombre(), a.getLink(), a.getTamano()};
+            model.addRow(row);
+        }
+
+        jt_descarga.setModel(model);
+
+
+    }//GEN-LAST:event_descargarActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        descarga.dispose();
+        main_lista.pack();
+        main_lista.setLocationRelativeTo(null);
+        main_lista.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -709,8 +807,7 @@ public class Menu extends javax.swing.JFrame {
                 new Menu().setVisible(true);
             }
         });
-        
-          
+
     }
 
     public static Random random = new Random();
@@ -748,10 +845,13 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_extension;
     private javax.swing.JButton crear_archivo;
     private javax.swing.JButton crear_carpeta;
+    private javax.swing.JDialog descarga;
+    private javax.swing.JMenuItem descargar;
     private javax.swing.JMenuItem destacado;
     private javax.swing.JMenuItem elim;
     private javax.swing.JMenuItem eliminar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -765,6 +865,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -773,6 +874,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JList<String> jl_basura;
     private javax.swing.JList<String> jl_destacados;
     private javax.swing.JList<String> jl_main;
+    private javax.swing.JTable jt_descarga;
     private javax.swing.JDialog main_lista;
     private javax.swing.JProgressBar pb_principal;
     private javax.swing.JProgressBar pb_principal2;
@@ -784,7 +886,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField tf_carpeta_nombre;
     // End of variables declaration//GEN-END:variables
  hilolink hl;
-    
-    
 
 }
