@@ -55,27 +55,27 @@ public class Menu extends javax.swing.JFrame {
         tf_carpeta_nombre = new javax.swing.JTextField();
         crear_carpeta = new javax.swing.JButton();
         main_lista = new javax.swing.JDialog();
-        pb_principal = new javax.swing.JProgressBar();
         jButton6 = new javax.swing.JButton();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_main = new javax.swing.JList<>();
-        destacados_lista = new javax.swing.JDialog();
+        pb_principal = new javax.swing.JProgressBar();
+        jPanel4 = new javax.swing.JPanel();
         pb_principal2 = new javax.swing.JProgressBar();
         jScrollPane3 = new javax.swing.JScrollPane();
         jl_destacados = new javax.swing.JList<>();
-        jButton8 = new javax.swing.JButton();
-        papelera_lista = new javax.swing.JDialog();
-        pb_principal1 = new javax.swing.JProgressBar();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel5 = new javax.swing.JPanel();
+        pb_principal3 = new javax.swing.JProgressBar();
+        jScrollPane4 = new javax.swing.JScrollPane();
         jl_basura = new javax.swing.JList<>();
-        jButton7 = new javax.swing.JButton();
         popup_main = new javax.swing.JPopupMenu();
         destacado = new javax.swing.JMenuItem();
         agregar = new javax.swing.JMenuItem();
         elim = new javax.swing.JMenuItem();
+        popup_eliminar = new javax.swing.JPopupMenu();
+        eliminar = new javax.swing.JMenuItem();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         jd_agregar.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -211,15 +211,19 @@ public class Menu extends javax.swing.JFrame {
         );
 
         main_lista.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-
-        pb_principal.setToolTipText("");
-        pb_principal.setString("");
-        pb_principal.setStringPainted(true);
+        main_lista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton6.setText("Regresar");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
+            }
+        });
+        main_lista.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 500, 107, 45));
+
+        jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane2StateChanged(evt);
             }
         });
 
@@ -230,134 +234,103 @@ public class Menu extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jl_main);
 
-        javax.swing.GroupLayout main_listaLayout = new javax.swing.GroupLayout(main_lista.getContentPane());
-        main_lista.getContentPane().setLayout(main_listaLayout);
-        main_listaLayout.setHorizontalGroup(
-            main_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(main_listaLayout.createSequentialGroup()
-                .addGroup(main_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, main_listaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(main_listaLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(pb_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 34, Short.MAX_VALUE)))
+        pb_principal.setToolTipText("");
+        pb_principal.setString("");
+        pb_principal.setStringPainted(true);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
-            .addGroup(main_listaLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(pb_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
-        main_listaLayout.setVerticalGroup(
-            main_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(main_listaLayout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pb_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
+
+        jTabbedPane2.addTab("Mi Unidad", jPanel3);
 
         pb_principal2.setToolTipText("");
         pb_principal2.setString("");
         pb_principal2.setStringPainted(true);
 
-        jl_destacados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jl_destacadosMouseClicked(evt);
-            }
-        });
         jScrollPane3.setViewportView(jl_destacados);
 
-        jButton8.setText("Regresar");
-        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton8MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout destacados_listaLayout = new javax.swing.GroupLayout(destacados_lista.getContentPane());
-        destacados_lista.getContentPane().setLayout(destacados_listaLayout);
-        destacados_listaLayout.setHorizontalGroup(
-            destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(destacados_listaLayout.createSequentialGroup()
-                .addGroup(destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, destacados_listaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(destacados_listaLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(pb_principal2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(destacados_listaLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(pb_principal2, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12))
         );
-        destacados_listaLayout.setVerticalGroup(
-            destacados_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(destacados_listaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pb_principal2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(pb_principal2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        pb_principal1.setToolTipText("");
-        pb_principal1.setString("");
-        pb_principal1.setStringPainted(true);
+        jTabbedPane2.addTab("Destacado", jPanel4);
+
+        pb_principal3.setToolTipText("");
+        pb_principal3.setString("");
+        pb_principal3.setStringPainted(true);
 
         jl_basura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jl_basuraMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jl_basura);
+        jScrollPane4.setViewportView(jl_basura);
 
-        jButton7.setText("Regresar");
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 641, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(pb_principal3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(pb_principal3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        javax.swing.GroupLayout papelera_listaLayout = new javax.swing.GroupLayout(papelera_lista.getContentPane());
-        papelera_lista.getContentPane().setLayout(papelera_listaLayout);
-        papelera_listaLayout.setHorizontalGroup(
-            papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(papelera_listaLayout.createSequentialGroup()
-                .addGroup(papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, papelera_listaLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(papelera_listaLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(pb_principal1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(papelera_listaLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        papelera_listaLayout.setVerticalGroup(
-            papelera_listaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(papelera_listaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pb_principal1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jTabbedPane2.addTab("Elminar", jPanel5);
+
+        main_lista.getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 670, 470));
 
         destacado.setLabel("Mover Destacado");
         destacado.addActionListener(new java.awt.event.ActionListener() {
@@ -376,20 +349,29 @@ public class Menu extends javax.swing.JFrame {
         popup_main.add(agregar);
 
         elim.setLabel("Eliminar");
+        elim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elimActionPerformed(evt);
+            }
+        });
         popup_main.add(elim);
+
+        eliminar.setLabel("Eliminar");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        popup_eliminar.add(eliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Mi Unidad");
+        jButton1.setText("Menu");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-
-        jButton2.setText("Papelera");
-
-        jButton3.setText("Destacados");
 
         jButton4.setText("Agregar");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -404,26 +386,18 @@ public class Menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(87, 87, 87)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -502,6 +476,7 @@ public class Menu extends javax.swing.JFrame {
 
             aa.cargarArchivo();
             ac.cargarArchivo();
+            int cant = ac.getLista().size();
 
             if (!ac.getLista().isEmpty()) {
 
@@ -537,7 +512,6 @@ public class Menu extends javax.swing.JFrame {
 
             tf_carpeta_nombre.setText("");
 
-            cant++;
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(jd_agregar, "Ocurrio un error!");
@@ -572,6 +546,19 @@ public class Menu extends javax.swing.JFrame {
             }
             objeto.close();
             entrada.close();
+            
+            Archivo temp2;
+
+            FileInputStream entrada2 = new FileInputStream("./Archivo.ola");
+            ObjectInputStream objeto2 = new ObjectInputStream(entrada2);
+            try {
+                while ((temp2 = (Archivo) objeto2.readObject()) != null) {
+                    modelo.addElement(temp2);
+                }
+            } catch (Exception e) {
+            }
+            objeto2.close();
+            entrada2.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -599,22 +586,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jl_mainMouseClicked
 
-    private void jl_basuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_basuraMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jl_basuraMouseClicked
-
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7MouseClicked
-
-    private void jl_destacadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_destacadosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jl_destacadosMouseClicked
-
-    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8MouseClicked
-
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         // TODO add your handling code here:
         jd_agregar.setLocationRelativeTo(null);
@@ -626,15 +597,84 @@ public class Menu extends javax.swing.JFrame {
     private void destacadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_destacadoActionPerformed
         // TODO add your handling code here:
         DefaultListModel model2 = (DefaultListModel) jl_main.getModel();
-
+        DefaultListModel model = new DefaultListModel();
+        model.addElement(jl_main.getSelectedValue());
         model2.remove(jl_main.getSelectedIndex());
-        
-        if (model2.get(jl_main.getSelectedIndex()) instanceof Carpeta) {
-            
-        }
-
+        jl_destacados.setModel(model);
         jl_main.setModel(model2);
     }//GEN-LAST:event_destacadoActionPerformed
+
+    private void jTabbedPane2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane2StateChanged
+        // TODO add your handling code here:
+
+        DefaultListModel modelo = new DefaultListModel();
+
+        if (jl_destacados.isSelectionEmpty()) {
+            hl = new hilolink(pb_principal2, "Destacado");
+        } else {
+            hl = new hilolink(pb_principal2, ((Carpeta) modelo.get(jl_destacados.getSelectedIndex())).getLink());
+
+        }
+
+        Thread proceso1 = new Thread(hl);
+        proceso1.start();
+        
+        if (jl_basura.isSelectionEmpty()) {
+            hl = new hilolink(pb_principal3, "Papelera");
+        } else {
+            hl = new hilolink(pb_principal3, ((Carpeta) modelo.get(jl_basura.getSelectedIndex())).getLink());
+
+        }
+
+        Thread proceso2 = new Thread(hl);
+        proceso2.start();
+
+       
+
+    }//GEN-LAST:event_jTabbedPane2StateChanged
+
+    private void elimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elimActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel model2 = (DefaultListModel) jl_main.getModel();
+        DefaultListModel model = new DefaultListModel();
+        model.addElement(jl_main.getSelectedValue());
+        model2.remove(jl_main.getSelectedIndex());
+        jl_basura.setModel(model);
+        jl_main.setModel(model2);
+    }//GEN-LAST:event_elimActionPerformed
+
+    private void jl_basuraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_basuraMouseClicked
+        // TODO add your handling code here:
+        if (jl_basura.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                popup_eliminar.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_basuraMouseClicked
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel model = (DefaultListModel) jl_basura.getModel();
+        if (model.get(jl_basura.getSelectedIndex()) instanceof Carpeta) {
+            adminCarpeta ac = new adminCarpeta("./Carpeta.ola");
+
+            ac.cargarArchivo();
+            ac.getLista().remove(jl_basura.getSelectedIndex());
+            ac.escribirArchivo();
+            model.remove(jl_basura.getSelectedIndex());
+
+            jl_basura.setModel(model);
+        } else if (model.get(jl_basura.getSelectedIndex()) instanceof Archivo) {
+            adminArchivo ac = new adminArchivo("./Archivo.ola");
+
+            ac.cargarArchivo();
+            ac.getLista().remove(jl_basura.getSelectedIndex());
+            ac.escribirArchivo();
+            model.remove(jl_basura.getSelectedIndex());
+
+            jl_basura.setModel(model);
+        }
+    }//GEN-LAST:event_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -669,6 +709,8 @@ public class Menu extends javax.swing.JFrame {
                 new Menu().setVisible(true);
             }
         });
+        
+          
     }
 
     public static Random random = new Random();
@@ -707,41 +749,42 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton crear_archivo;
     private javax.swing.JButton crear_carpeta;
     private javax.swing.JMenuItem destacado;
-    private javax.swing.JDialog destacados_lista;
     private javax.swing.JMenuItem elim;
+    private javax.swing.JMenuItem eliminar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JDialog jd_agregar;
     private javax.swing.JList<String> jl_basura;
     private javax.swing.JList<String> jl_destacados;
     private javax.swing.JList<String> jl_main;
     private javax.swing.JDialog main_lista;
-    private javax.swing.JDialog papelera_lista;
     private javax.swing.JProgressBar pb_principal;
-    private javax.swing.JProgressBar pb_principal1;
     private javax.swing.JProgressBar pb_principal2;
+    private javax.swing.JProgressBar pb_principal3;
+    private javax.swing.JPopupMenu popup_eliminar;
     private javax.swing.JPopupMenu popup_main;
     private javax.swing.JTextField tf_archivo_nombre;
     private javax.swing.JTextField tf_archivo_size;
     private javax.swing.JTextField tf_carpeta_nombre;
     // End of variables declaration//GEN-END:variables
-    int cant = 0;
-    hilolink hl;
+ hilolink hl;
+    
+    
 
 }

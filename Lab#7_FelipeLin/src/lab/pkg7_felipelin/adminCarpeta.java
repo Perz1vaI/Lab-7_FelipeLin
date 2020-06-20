@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class adminCarpeta {
     
-     private ArrayList<Carpeta> lista = new ArrayList();
+    private ArrayList<Carpeta> lista = new ArrayList();
     private File archivo = null;
 
     public adminCarpeta() {
